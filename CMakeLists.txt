@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10.2)
 
 set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/build/cmake")
 
 execute_process(
     COMMAND git describe --abbrev=0
@@ -33,9 +34,5 @@ install(
     COMPONENT headers
 )
 
-set(CPACK_GENERATOR "DEB")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yan QiDong")
-set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "This is a demo package from Yan QiDong.")
-set(CPACK_DEBIAN_PACKAGE_VERSION ${PACKAGE_VERSION})
-set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+include(deb)  # build/cmake/deb.cmake
 include(CPack)
