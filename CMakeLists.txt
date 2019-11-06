@@ -18,13 +18,19 @@ target_link_libraries(hello greet)
 install(
     TARGETS greet
     COMPONENT libraries
-    DESTINATION "/usr/lib"
+    DESTINATION "lib"
 )
 
 install(
     TARGETS hello
     COMPONENT applications
-    DESTINATION "/usr/bin"
+    DESTINATION "bin"
+)
+
+install(
+    FILES "include/greet.h"
+    DESTINATION "include"
+    COMPONENT headers
 )
 
 set(CPACK_GENERATOR "DEB")
